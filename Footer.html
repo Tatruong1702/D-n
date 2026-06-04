@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXA - Premium Cotton Overshirt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600&amp;display=swap');
+        
+        :root {
+            --primary: 0 0 0;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .hero-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .product-image {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .thumbnail {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .thumbnail.active {
+            border: 2px solid #000;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .size-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .size-btn.active {
+            background-color: black;
+            color: white;
+            border-color: black;
+        }
+
+        .scroll-progress {
+            height: 2px;
+            background: linear-gradient(to right, #000, #666);
+        }
+    </style>
+</head>
+<body class="tail-container bg-white text-gray-900">
+    <!-- NAVBAR -->
+    <nav class="border-b sticky top-0 bg-white z-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between px-6 py-5">
+                <!-- Logo -->
+                <div class="flex items-center gap-8">
+                    <a href="#" class="hero-font text-3xl font-semibold tracking-tighter">NEXA</a>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#" class="hover:text-gray-500 transition">NAM</a>
+                    <a href="#" class="hover:text-gray-500 transition">NỮ</a>
+                    <a href="#" class="hover:text-gray-500 transition">PHỤ KIỆN</a>
+                    <a href="#" class="hover:text-gray-500 transition">BÁN CHẠY</a>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <button class="hover:text-gray-500 transition">
+                        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                    </button>
+                    <button class="hover:text-gray-500 transition">
+                        <i class="fa-solid fa-user text-xl"></i>
+                    </button>
+                    <button onclick="toggleCart()" class="hover:text-gray-500 transition relative">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <!-- IMAGE GALLERY -->
+            <div class="lg:w-1/2">
+                <div class="sticky top-24">
+                    <!-- Main Image -->
+                    <div id="main-image" class="aspect-square bg-gray-100 rounded-3xl overflow-hidden mb-6 shadow-xl">
+                        <img id="main-img" 
+                             src="https://picsum.photos/id/1015/800/800" 
+                             alt="Premium Overshirt" 
+                             class="w-full h-full object-cover product-image">
+                    </div>
+                    
+                    <!-- Thumbnails -->
+                    <div class="grid grid-cols-4 gap-4">
+                        <img onclick="changeImage(this)" 
+                             src="https://picsum.photos/id/1015/800/800" 
+                             class="thumbnail active w-full aspect-square object-cover rounded-2xl cursor-pointer border-2 border-black">
+                        <img onclick="changeImage(this)" 
+                             src="https://picsum.photos/id/1020/800/800" 
+                             class="thumbnail w-full aspect-square object-cover rounded-2xl cursor-pointer">
+                        <img onclick="changeImage(this)" 
+                             src="https://picsum.photos/id/1033/800/800" 
+                             class="thumbnail w-full aspect-square object-cover rounded-2xl cursor-pointer">
+                        <img onclick="changeImage(this)" 
+                             src="https://picsum.photos/id/106/800/800" 
+                             class="thumbnail w-full aspect-square object-cover rounded-2xl cursor-pointer">
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT INFO -->
+            <div class="lg:w-1/2">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-xs tracking-widest font-medium text-gray-500">NEXA ESSENTIALS</span>
+                        <h1 class="hero-font text-4xl font-semibold mt-2 leading-tight">Overshirt Cotton Premium</h1>
+                        <p class="text-gray-600 mt-1">Màu Đen • Mã SP: NX-OS24-BLK</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-3xl font-semibold">1.890.000 ₫</p>
+                        <p class="text-green-600 text-sm font-medium">Còn 24 sản phẩm</p>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="flex items-center gap-2 mt-6">
+                    <div class="flex text-yellow-400">
+                        ★★★★☆
+                    </div>
+                    <span class="text-sm text-gray-600">(142 đánh giá)</span>
+                </div>
+
+                <!-- Color -->
+                <div class="mt-8">
+                    <p class="text-sm font-medium mb-3">MÀU SẮC</p>
+                    <div class="flex gap-3">
+                        <button onclick="selectColor(this)" class="w-9 h-9 bg-black rounded-2xl border-2 border-white shadow-md active"></button>
+                        <button onclick="selectColor(this)" class="w-9 h-9 bg-stone-300 rounded-2xl border-2 border-white shadow-md"></button>
+                        <button onclick="selectColor(this)" class="w-9 h-9 bg-emerald-700 rounded-2xl border-2 border-white shadow-md"></button>
+                    </div>
+                </div>
+
+                <!-- Size -->
+                <div class="mt-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <p class="text-sm font-medium">KÍCH CỠ</p>
+                        <a href="#" class="text-xs text-gray-500 hover:text-black underline">Bảng kích cỡ</a>
+                    </div>
+                    <div class="grid grid-cols-5 gap-3" id="size-options">
+                        <button onclick="selectSize(this)" class="size-btn border border-gray-300 py-4 text-sm font-medium rounded-2xl">S</button>
+                        <button onclick="selectSize(this)" class="size-btn border border-gray-300 py-4 text-sm font-medium rounded-2xl">M</button>
+                        <button onclick="selectSize(this)" class="size-btn border border-gray-300 py-4 text-sm font-medium rounded-2xl active">L</button>
+                        <button onclick="selectSize(this)" class="size-btn border border-gray-300 py-4 text-sm font-medium rounded-2xl">XL</button>
+                        <button onclick="selectSize(this)" class="size-btn border border-gray-300 py-4 text-sm font-medium rounded-2xl">XXL</button>
+                    </div>
+                </div>
+
+                <!-- Quantity -->
+                <div class="mt-8">
+                    <p class="text-sm font-medium mb-3">SỐ LƯỢNG</p>
+                    <div class="flex items-center gap-4 w-fit border border-gray-200 rounded-3xl">
+                        <button onclick="changeQuantity(-1)" class="w-12 h-12 flex items-center justify-center text-2xl hover:bg-gray-100 rounded-l-3xl">-</button>
+                        <span id="quantity" class="w-12 text-center font-medium">1</span>
+                        <button onclick="changeQuantity(1)" class="w-12 h-12 flex items-center justify-center text-2xl hover:bg-gray-100 rounded-r-3xl">+</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-10 flex flex-col gap-4">
+                    <button onclick="addToCart()" 
+                            class="bg-black text-white py-5 rounded-3xl font-semibold text-lg hover:bg-gray-900 transition flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        THÊM VÀO GIỎ HÀNG
+                    </button>
+                    
+                    <button onclick="buyNow()" 
+                            class="border border-black py-5 rounded-3xl font-semibold text-lg hover:bg-gray-100 transition">
+                        MUA NGAY
+                    </button>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-12 border-t pt-8">
+                    <h3 class="font-semibold mb-4">MÔ TẢ SẢN PHẨM</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Overshirt được may từ vải cotton cao cấp 320gsm, mang lại cảm giác mềm mại, thoáng khí và bền màu. 
+                        Thiết kế oversize hiện đại, phù hợp mặc layering hoặc mặc riêng. 
+                        Hoàn hảo cho phong cách casual tối giản.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mt-8 text-sm">
+                        <div>
+                            <p class="font-medium">Chất liệu</p>
+                            <p class="text-gray-600">100% Cotton Organic</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Chăm sóc</p>
+                            <p class="text-gray-600">Giặt máy 30°C • Không tẩy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Summary -->
+                <div class="mt-12">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-semibold">ĐÁNH GIÁ</h3>
+                        <button onclick="showReviews()" class="text-sm text-gray-500 hover:text-black">Xem tất cả (142)</button>
+                    </div>
+                    
+                    <!-- Sample Review -->
+                    <div class="border-l-2 border-black pl-6 py-1">
+                        <div class="flex items-center gap-3">
+                            <div class="text-yellow-400">★★★★☆</div>
+                            <span class="text-sm font-medium">Minh Anh • 2 ngày trước</span>
+                        </div>
+                        <p class="mt-2 text-gray-600">"Chất vải cực kỳ tốt, mặc rất thoải mái. Màu đen đẹp và không xù lông sau nhiều lần giặt."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RELATED PRODUCTS -->
+        <div class="mt-24">
+            <h2 class="text-2xl font-semibold mb-8">SẢN PHẨM LIÊN QUAN</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div onclick="viewProduct(1)" class="group cursor-pointer">
+                    <div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/id/201/600/600" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <p class="font-medium">Relaxed Chino Pants</p>
+                    <p class="text-gray-500 text-sm">1.450.000 ₫</p>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div onclick="viewProduct(2)" class="group cursor-pointer">
+                    <div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/id/251/600/600" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <p class="font-medium">Minimal Sneakers</p>
+                    <p class="text-gray-500 text-sm">2.290.000 ₫</p>
+                </div>
+                
+                <!-- Product Card 3 -->
+                <div onclick="viewProduct(3)" class="group cursor-pointer">
+                    <div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/id/180/600/600" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <p class="font-medium">Wool Blend Cardigan</p>
+                    <p class="text-gray-500 text-sm">1.890.000 ₫</p>
+                </div>
+                
+                <!-- Product Card 4 -->
+                <div onclick="viewProduct(4)" class="group cursor-pointer">
+                    <div class="aspect-square bg-gray-100 rounded-3xl overflow-hidden mb-4">
+                        <img src="https://picsum.photos/id/201/600/600" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <p class="font-medium">Oxford Shirt White</p>
+                    <p class="text-gray-500 text-sm">1.290.000 ₫</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white mt-24">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="hero-font text-2xl mb-6">NEXA</h3>
+                    <p class="text-gray-400 text-sm">Thời trang tối giản cho cuộc sống hiện đại.</p>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Khám phá</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Bộ sưu tập mới</a></li>
+                        <li><a href="#" class="hover:text-white">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-white">Sale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Hỗ trợ</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Liên hệ</a></li>
+                        <li><a href="#" class="hover:text-white">Chính sách đổi trả</a></li>
+                        <li><a href="#" class="hover:text-white">Theo dõi đơn hàng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Newsletter</h4>
+                    <p class="text-sm text-gray-400 mb-4">Nhận thông tin ưu đãi đặc biệt</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email của bạn" 
+                               class="bg-white/10 border border-white/30 px-5 py-3 text-sm flex-1 rounded-l-3xl focus:outline-none">
+                        <button class="bg-white text-black px-8 rounded-r-3xl font-medium text-sm">Đăng ký</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs text-gray-500 mt-16 pt-8 border-t border-white/10">
+                © 2026 NEXA. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 bg-black text-white px-6 py-4 rounded-3xl flex items-center gap-3 shadow-2xl">
+        <i class="fa-solid fa-check"></i>
+        <span id="toast-message" class="font-medium">Đã thêm vào giỏ hàng</span>
+    </div>
+
+    <script>
+        // Tailwind Script
+        function initTailwind() {
+            // Already included via CDN
+        }
+
+        // Image Gallery
+        function changeImage(el) {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            el.classList.add('active');
+            
+            const mainImg = document.getElementById('main-img');
+            mainImg.src = el.src;
+        }
+
+        // Size Selection
+        function selectSize(el) {
+            const sizes = document.querySelectorAll('#size-options button');
+            sizes.forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Color Selection
+        function selectColor(el) {
+            const colors = document.querySelectorAll('.w-9.h-9');
+            colors.forEach(c => c.classList.remove('active', 'ring-2', 'ring-offset-2', 'ring-black'));
+            el.classList.add('active', 'ring-2', 'ring-offset-2', 'ring-black');
+        }
+
+        // Quantity
+        let quantity = 1;
+        function changeQuantity(change) {
+            quantity = Math.max(1, quantity + change);
+            document.getElementById('quantity').textContent = quantity;
+        }
+
+        // Add to Cart
+        function addToCart() {
+            const toast = document.getElementById('toast');
+            const message = document.getElementById('toast-message');
+            
+            message.textContent = 'Đã thêm vào giỏ hàng';
+            toast.classList.remove('hidden');
+            toast.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(100px)';
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 300);
+            }, 2500);
+            
+            // Update cart count
+            let count = parseInt(document.getElementById('cart-count').textContent);
+            document.getElementById('cart-count').textContent = count + 1;
+        }
+
+        function buyNow() {
+            alert('Đang chuyển hướng đến trang thanh toán...');
+            // Simulate checkout
+        }
+
+        // Fake Reviews Modal
+        function showReviews() {
+            alert('📋 Đang tải tất cả đánh giá...\n\n(Đây là demo UI)');
+        }
+
+        // Fake Related Product Click
+        function viewProduct(id) {
+            alert(`Đang xem sản phẩm liên quan #${id} (Demo)`);
+        }
+
+        // Cart Toggle (Demo)
+        function toggleCart() {
+            alert('🛍️ Giỏ hàng:\n\n1. Overshirt Cotton Premium - 1.890.000 ₫ × 1\n\nTổng: 1.890.000 ₫');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const toast = document.getElementById('toast');
+                if (!toast.classList.contains('hidden')) {
+                    toast.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize
+        window.onload = function() {
+            console.log('%cNEXA Product Detail Page - Demo Loaded', 'color: #000; font-family: monospace; font-size: 13px;');
+            
+            // Auto select default size
+            const defaultSize = document.querySelector('#size-options button.active');
+            if (defaultSize) defaultSize.click();
+        };
+    </script>
+</body>
+</html>
